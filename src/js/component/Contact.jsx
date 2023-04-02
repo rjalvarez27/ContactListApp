@@ -20,22 +20,29 @@ const Contact = () => {
     
    
     return (
-        <div>
-        <button onClick={()=>navigate("/addcontact")}> AddNewContact</button>
-        <div className=" card w-75 m-auto my-5">
-            <h1 className="text-center">Lista de Contactos</h1>
-            <h3 className="text-center">Contacto</h3>
+        <div className="container">
+        <div className="d-flex justify-content-end">  
+        <button onClick={()=>navigate("/addcontact")} className="m-2 btn btn-success"> Add New Contact</button>
+        </div>  
+        <h1 className="text-center">Lista de Contactos</h1>
+        <div className=" card w-75 m-auto my-5">            
             <ul>
                 {
                     list.map((contact, index) => {
                         return (
                             <li key = {index}>
+                            <div className="container-fluid d-flex flex-row m-2 col-10  ">
+                                <div className="col-8" >
                                 <div className="text-center">Name: {contact.Fullname} </div>
                                 <div className="text-center">Email: {contact.email} </div>
                                 <div className="text-center">Phone: {contact.phone}  </div>
                                 <div className="text-center">Adress: {contact.address}  </div>
-                              <button onClick={() => removeContacts(index)}>borrame</button>
-                              <button onClick={()=>handleedit (index)}>editar</button>
+                                </div>
+                              <div className="d-flex justify-content-end col-2">
+                              <div onClick={() => removeContacts(index)} className="m-2"><i class="fas fa-trash-alt"></i></div>
+                              <div onClick={()=>handleedit (index)} className="m-2"><i class="fas fa-pencil-alt"></i></div>                              
+                              </div>  
+                            </div> 
                             </li>
                         )
                     })
