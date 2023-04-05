@@ -14,7 +14,7 @@ const AddContact = () => {
   const navigate = useNavigate();
 
   const contex = useContext(ContacContex);
-  const { addContact } = contex;
+  const { hanledAddContact } = contex;
 
   const [user, setUser] = useState(initialValue);
 
@@ -22,15 +22,17 @@ const AddContact = () => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const redirectContact = () => {
-    addContact(user);
+  const hanledRedirectContact = () => {
+    hanledAddContact(user);
     navigate("/");
   };
 
   return (
     <div className="container">
       <div className=" card w-75 m-auto my-5 border border-0 ">
-        <h1 className="text-center"><b>Add a New contact</b></h1>
+        <h1 className="text-center">
+          <b>Add a New contact</b>
+        </h1>
         <h5 className="m-2">Full Name</h5>
         <input
           type="fullname"
@@ -69,10 +71,17 @@ const AddContact = () => {
         />
         <button
           type="button"
-          onClick={() => redirectContact()}
-          className="btn btn-primary mt-3 "> <b>save</b></button>      
-      
-        <Link className="mt-1" to={"/"}><h5><b>or get back to contacts</b></h5></Link>
+          onClick={() => hanledRedirectContact()}
+          className="btn btn-primary mt-3 "
+        >
+        <b>save</b>
+        </button>
+
+        <Link className="mt-1" to={"/"}>
+          <h5>
+            <b>or get back to contacts</b>
+          </h5>
+        </Link>
       </div>
     </div>
   );
